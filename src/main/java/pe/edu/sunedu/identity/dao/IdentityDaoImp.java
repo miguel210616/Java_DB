@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.sunedu.identity.model.Identity;
+import pe.edu.sunedu.identity.model.IdentityUniversity;
+import pe.edu.sunedu.identity.model.University;
 
 @Repository
 public class IdentityDaoImp implements IdentityDao{
@@ -29,6 +31,7 @@ public class IdentityDaoImp implements IdentityDao{
         @Override
         public Identity mapRow(ResultSet rs, int rowNum) throws SQLException {
         	Identity identity = new Identity();
+        	identity.setId(rs.getInt("id"));
         	identity.setCodigo(rs.getString("codigo"));
         	identity.setNombreUniversidad(rs.getString("nombre_universidad"));
         	identity.setTiposGestion(rs.getString("tipos_gestion"));
@@ -80,5 +83,50 @@ public class IdentityDaoImp implements IdentityDao{
 //            });
 //    }
 	
+	@Override
+	public List<University> obtenerUniversity() {
+		 return jdbcTemplate.query("select  codigo, \n" + 
+		 		"	nombre_universidad, \n" + 
+		 		"	count(*) as cantidad\n" + 
+		 		"    from carne_universitario group by codigo", new UniversityRowMapper());
+	}
+	
+	
+	class UniversityRowMapper implements RowMapper <University> {
+        @Override
+        public University mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	University university = new University();
+        	university.setCodigo(rs.getString("codigo"));
+        	university.setNombreUniversidad(rs.getString("nombre_universidad"));
+        	university.setCantidad(rs.getInt("cantidad"));
+            return university;
+        }
+    }
+	
+	@Override
+	public List<IdentityUniversity> obtenerIdentityUniversity() {
+		 return jdbcTemplate.query("select  codigo, \n" + 
+		 		"			nombre_universidad, \n" + 
+		 		"            nombre_clase_Programa, \n" + 
+		 		"            count(*) as cantidad, \n" + 
+		 		"            SUM(catidad_carnes)  as tramites\n" + 
+		 		"            from carne_universitario \n" + 
+		 		"            group by codigo, nombre_clase_Programa", new IdentityUniversityRowMapper());
+	}
+	
+	
+	class IdentityUniversityRowMapper implements RowMapper <IdentityUniversity> {
+        @Override
+        public IdentityUniversity mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	IdentityUniversity identityUniversity = new IdentityUniversity();
+        	identityUniversity.setCodigo(rs.getString("codigo"));
+        	identityUniversity.setNombreUniversidad(rs.getString("nombre_universidad"));
+        	identityUniversity.setNombreFacultad(rs.getString("nombre_clase_Programa"));
+        	identityUniversity.setCantidad(rs.getInt("cantidad"));
+        	identityUniversity.setTramites(rs.getInt("tramites"));
+
+            return identityUniversity;
+        }
+    }
 
 }

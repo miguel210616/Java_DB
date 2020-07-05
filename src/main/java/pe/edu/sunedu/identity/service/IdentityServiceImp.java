@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.sunedu.identity.dao.IdentityDao;
 import pe.edu.sunedu.identity.model.Identity;
+import pe.edu.sunedu.identity.model.IdentityUniversity;
+import pe.edu.sunedu.identity.model.University;
 
 @Service
 public class IdentityServiceImp implements IdentityService{
@@ -33,6 +35,18 @@ public class IdentityServiceImp implements IdentityService{
 	public List<Identity> insert(Identity identity) {
 		identityDao.insert(identity);
 		return identityDao.obtenerByCodigo(identity.getCodigo());
+	}
+
+	@Override
+	public List<University> obtenerUniversity() {
+		// TODO Auto-generated method stub
+		return identityDao.obtenerUniversity();
+	}
+
+	@Override
+	public List<IdentityUniversity> obtenerIdentityUniversity() {
+		// TODO Auto-generated method stub
+		return identityDao.obtenerIdentityUniversity();
 	}
 	
 	

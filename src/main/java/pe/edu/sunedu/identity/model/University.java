@@ -2,16 +2,15 @@ package pe.edu.sunedu.identity.model;
 
 import java.io.Serializable;
 
-public class Identity implements Serializable{
+public class University implements Serializable{
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5583334291188258880L;
-	private Integer id;
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private String nombreUniversidad;
-	private String tiposGestion;
-	
+	private Integer cantidad;
 	public String getCodigo() {
 		return codigo;
 	}
@@ -24,17 +23,12 @@ public class Identity implements Serializable{
 	public void setNombreUniversidad(String nombreUniversidad) {
 		this.nombreUniversidad = nombreUniversidad;
 	}
-	public String getTiposGestion() {
-		return tiposGestion;
+	public Integer getCantidad() {
+		return cantidad;
 	}
-	public void setTiposGestion(String tiposGestion) {
-		this.tiposGestion = tiposGestion;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 	
+
 }
