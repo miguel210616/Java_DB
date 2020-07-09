@@ -10,6 +10,7 @@ public class University implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private String nombreUniversidad;
+	private String tipoGestion;
 	private Integer cantidad;
 	public String getCodigo() {
 		return codigo;
@@ -28,6 +29,12 @@ public class University implements Serializable{
 	}
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+	public String getTipoGestion() {
+		return tipoGestion;
+	}
+	public void setTipoGestion(String tipoGestion) {
+		this.tipoGestion = tipoGestion;
 	}
 	
 

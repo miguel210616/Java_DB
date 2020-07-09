@@ -31,11 +31,11 @@ public class IdentityServiceImp implements IdentityService{
 		return identityDao.obtenerByCodigo(codigo);
 	}
 
-	@Override
-	public List<Identity> insert(Identity identity) {
-		identityDao.insert(identity);
-		return identityDao.obtenerByCodigo(identity.getCodigo());
-	}
+//	@Override
+//	public List<Identity> insert(Identity identity) {
+//		identityDao.insert(identity);
+//		return identityDao.obtenerByCodigo(identity.getCodigo());
+//	}
 
 	@Override
 	public List<University> obtenerUniversity() {
@@ -47,6 +47,12 @@ public class IdentityServiceImp implements IdentityService{
 	public List<IdentityUniversity> obtenerIdentityUniversity() {
 		// TODO Auto-generated method stub
 		return identityDao.obtenerIdentityUniversity();
+	}
+
+	@Override
+	public List<Identity> insert(Identity identity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

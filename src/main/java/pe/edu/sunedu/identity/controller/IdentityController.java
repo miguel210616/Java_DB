@@ -28,15 +28,15 @@ public class IdentityController {
 		return identityService.obtener();
 	}
 	
-	@PostMapping("/obtener-id")
-	public Identity findById(@RequestBody Identity identity) {
-		return identityService.findById(identity.getCodigo());
-	}
-	
-	@PostMapping("/obtener-codigo")
-	public List <Identity> obtenerByCodigo(@RequestBody Identity identity){
-		return identityService.obtenerByCodigo(identity.getCodigo());
-	}
+//	@PostMapping("/obtener-id")
+//	public Identity findById(@RequestBody Identity identity) {
+//		return identityService.findById(identity.getCodigo());
+//	}
+//	
+//	@PostMapping("/obtener-codigo")
+//	public List <Identity> obtenerByCodigo(@RequestBody Identity identity){
+//		return identityService.obtenerByCodigo(identity.getCodigo());
+//	}
 	
 	@PostMapping("/crear")
 	public List <Identity> insert(@RequestBody Identity identity) {
